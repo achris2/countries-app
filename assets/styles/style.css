@@ -17,15 +17,25 @@
     width: 30% !important;
 }
 
+#travelC:hover {
+    color: #D83F87 !important;
+}
+
 
 .nav-link {
     color: white !important;
     font-size:xx-large;
 }
 
+#nav-link:hover {
+
+    color: #D83F87 !important;
+}
+
 .countrySearch {
     width: 800px;
     height: 50px;
+    text-align: center;
 
 }
 
