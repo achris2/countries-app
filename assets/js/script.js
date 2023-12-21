@@ -6,10 +6,9 @@
 
 // global variables 
 
+
 // Input Country test 
 let inputCountry = "United Kingdom";
-
-
 
 // pulling from RestCountries API 
 
