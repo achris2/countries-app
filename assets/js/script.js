@@ -85,8 +85,8 @@ function renderCard(data){
          <p class="card-text"><b>Region: </b>${data.region}</p>
          <p>${data.name} (${data.date}) <img src="${data.icon}"> </p>
          <p>Temp: ${data.temp} °C</p>
-         <p>Humidity: ${data.temp}%</p>
-         <a href="#" class="btn btn-primary">Save to Favourites!</a>
+         <p>Humidity: ${data.humidity}%</p>
+         <a href="#" class="btn btn-primary save_btn">Save to Favourites!</a>
     `)
     cardDiv.append(`
         <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
@@ -96,3 +96,68 @@ function renderCard(data){
      </div>
     `);
 }
+
+// local sotrage
+
+searchCountry();
+
+// Function to check local storage for saved data
+function displaySavedData() {
+    var savedData = JSON.parse(localStorage.getItem('countryData')) || [];
+
+console.log(savedData);
+
+    // Iterate through the savedData and generate HTML for each saved country
+    for (var countryId in savedData) {
+        if (savedData.hasOwnProperty(countryId)) {
+            var countryData = savedData[countryId].split('-');
+            var inputCountry = countryId;
+
+            var cardHtml = `
+                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <img class="card-img-top" src="${data.flag}" alt="Card image cap">
+                        <h5 class="card-title">${data.name}</h5>
+                        <p class="card-text"><b>Capital: </b>${data.capital}</p>
+                        <p class="card-text"><b>Population: </b>${data.population}</p>
+                        <p class="card-text"><b>Region: </b>${data.region}</p>
+                        <p>${data.name} (${data.date}) <img src="${data.icon}"> </p>
+                        <p>Temp: ${data.temp} °C</p>
+                        <p>Humidity: ${data.humidity}%</p>
+                        <a href="#" class="fave-btn btn btn-primary already_saved">Saved in Favourites!</a>
+                        </div>
+                    </div>
+                </div>`;
+
+            // Append the generated HTML to a container on your page
+            cardDiv.append(cardHtml);
+
+        }
+    }
+}
+
+// Call the function when the page is loaded
+$(document).ready(function () {
+      displaySavedData();
+      if (localStorage.getItem('countryData') === null) {
+          searchCountry(data.name);
+      }
+});
+
+
+$(document).on("click", ".save_btn",function (e) {
+    e.preventDefault();
+    data_id = $(this).attr("data-id");
+    data_population = $(this).attr("data-population");
+    data_capital = $(this).attr("data-capital");
+    data_region = $(this).attr("data-region");
+    img_data = $(this).attr("img_data");
+    $(this).text("Saved to Favourites!");
+    var savedData = JSON.parse(localStorage.getItem('countryData')) || {};
+
+    savedData[data_id] = data_population +"-"+ data_population +"-"+ data_capital +"-"+ data_region + "-" + img_data;
+
+    // Save the updated data back to local storage
+    localStorage.setItem('countryData[0]', JSON.stringify(savedData));
+});
