@@ -11,7 +11,7 @@ Click on the following link to access the URL:
 
 ### Usage
 Once the URL has loaded this is what you will see: 
-![alt text](./Assets/Images/.png)<br>
+![alt text](./assets/images/web-page.png)<br>
 A user can then enter in a destination of choice by typing in the country they wish to search and push enter.<br>
 This will bring up information about the country searched.<br>
 The user will then be able to save the country searched as a favorite, which will then display the next time they open the URL using the local storage function.
@@ -19,7 +19,9 @@ The user will then be able to save the country searched as a favorite, which wil
 
 
 ### Credits
-EdX front end web development course.
+EdX front end web development course.<br>
+[Rest Countries API](https://restcountries.com/)</br>
+[Open Weather Map API](https://openweathermap.org/api)
 <!-- Add APIs used as well as any links -->
 
 

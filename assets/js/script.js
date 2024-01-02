@@ -1,6 +1,7 @@
 // global variables
 // insert HTML selectors here
 let cardDiv = $('#card-div');
+let saved_fav = $('#saved_fav');
 // add event listener to search button
 $('#country-search').on('keypress', function (event) {
     if(event.key === "Enter"){
@@ -78,21 +79,114 @@ function renderCard(data){
     var cardBody = $('<div>')
     cardBody.addClass('card-body')
     cardBody.append(`
-         <img class="card-img-top" src="${data.flag}" alt="Card image cap">
-         <h5 class="card-title">${data.name}</h5>
-         <p class="card-text"><b>Capital: </b>${data.capital}</p>
-         <p class="card-text"><b>Population: </b>${data.population}</p>
-         <p class="card-text"><b>Region: </b>${data.region}</p>
-         <p>${data.name} (${data.date}) <img src="${data.icon}"> </p>
-         <p>Temp: ${data.temp} °C</p>
-         <p>Humidity: ${data.temp}%</p>
-         <a href="#" class="btn btn-primary">Save to Favourites!</a>
-    `)
-    cardDiv.append(`
-        <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+            <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
             <div class="card" style="width: 18rem;">
-                ${cardBody.html()}
-            </div>
-     </div>
-    `);
+            <div class="card-body">
+            <img class="card-img-top" src="${data.flag}" alt="Card image cap">
+            <h5 class="card-title">${data.name}</h5>
+            <p class="card-text"><b>Capital: </b>${data.capital}</p>
+            <p class="card-text"><b>Population: </b>${data.population}</p>
+            <p class="card-text"><b>Region: </b>${data.region}</p>
+            <p>${data.name} (${data.date}) <img src="${data.icon}"> </p>
+            <p><b>Temp:</b> ${data.temp} °C</p>
+            <p><b>Humidity:</b> ${data.humidity}%</p>
+            <a href="#" data-id="${data.name}" data-region="${data.region}" data-population="${data.population}" img-data="${data.flag}" data-capital="${data.capital}" img-icon="${data.icon}" nameWith-icon="${data.name} (${data.date})" temprature="${data.temp}" data_humidity="${data.humidity}" class="btn btn-primary save_btn">Save to Favourites!</a>
+        </div>
+        </div>
+        </div>
+        `)
+    cardDiv.append(cardBody.html());
+    $(".heading_country").show();
+    //     `
+    //     <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+    //         <div class="card" style="width: 18rem;">
+    //             ${cardBody.html()}
+    //         </div>
+    //  </div>
+    // `);
 }
+
+
+// Save countries in local storage
+// Function to check local storage for saved data
+function displaySavedData() {
+    var savedData = JSON.parse(localStorage.getItem('countryData')) || {};
+    
+    // console.log("okok");
+    for (var countryId in savedData) {
+        if (savedData.hasOwnProperty(countryId)) {
+            var countryData = savedData[countryId].split('-1');
+
+            // console.log(countryData);
+
+            var cardHtml = `
+                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <img class="card-img-top" src="${countryData[4]}" alt="Card image cap">
+                        <h5 class="card-title">${countryId}</h5>
+                        <p class="card-text"><b>Capital: </b>${countryData[2]}</p>
+                        <p class="card-text"><b>Population: </b>${countryData[0]}</p>
+                        <p class="card-text"><b>Region: </b>${countryData[3]}</p>
+                        <p>${countryData[6]} <img src="${countryData[5]}"> </p>
+                        <p><b>Temp:</b> ${countryData[7]} °C</p>
+                        <p><b>Humidity: </b> ${countryData[8]}%</p>
+                        <a href="#" class="fave-btn btn btn-primary already_saved">Saved in Favourites!</a>
+                        </div>
+                    </div>
+                </div>`;
+
+            // Append the generated HTML to a container on page
+            // cardDiv.innerHTML += cardHtml;
+                // console.log(cardHtml);
+
+        saved_fav.append(cardHtml);
+        }
+    }
+}
+
+$(document).on("click", ".already_saved",function (e) {
+  e.preventDefault();
+  alert("You Already Saved");
+});
+
+$(document).on("click", ".clear_favourites button",function (e) {
+  e.preventDefault();
+  localStorage.removeItem('countryData');
+  location.reload();
+});
+
+
+// // Call the function when the page is loaded
+$(document).ready(function () {
+      displaySavedData();
+      if (localStorage.getItem('countryData') !== null) {
+      	$("#saved_fav > h2").show();
+      	$(".upper_card #saved_fav").append("<div class='clear_favourites'><button>Clear Favourites</button></div>")
+      }
+});
+
+$(document).on("click", ".save_btn",function (e) {
+    e.preventDefault();
+    data_id = $(this).attr("data-id");
+    data_population = $(this).attr("data-population");
+    data_capital = $(this).attr("data-capital");
+    data_region = $(this).attr("data-region");
+    
+    img_data = $(this).attr("img-data");
+    
+    img_icon = $(this).attr("img-icon");
+    namewith_icon = $(this).attr("namewith-icon");
+    temprature = $(this).attr("temprature");
+    // console.log(namewith_icon)
+    data_humidity = $(this).attr("data_humidity");
+
+    $(this).text("Saved to Favourites!");
+    var savedData = JSON.parse(localStorage.getItem('countryData')) || {};
+
+    savedData[data_id] = data_population +"-1"+ data_population +"-1"+ data_capital +"-1"+ data_region + "-1" + img_data + "-1" + img_icon + "-1" + namewith_icon + "-1" + temprature + "-1" + data_humidity;
+
+    // Save the updated data back to local storage
+    localStorage.setItem('countryData', JSON.stringify(savedData));
+
+});
