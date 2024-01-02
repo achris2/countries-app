@@ -6,9 +6,36 @@ let saved_fav = $('#saved_fav');
 $('#country-search').on('keypress', function (event) {
     if(event.key === "Enter"){
         event.preventDefault();
-        let inputCountry= $('#country-search').val();
-        console.log (inputCountry);
-        searchCountry(inputCountry)
+        let inputCountry= $('#country-search').val().trim();
+        // console.log (inputCountry);
+        // searchCountry(inputCountry)
+
+        // console.log("Input Country:", inputCountry);
+        //prevent search twice
+        if ($(".card-title").length > 0) {
+            let found = false;
+
+            $(".card-title").each(function () {
+                console.log("Loop iteration");
+                let card_title = $(this).text().trim();
+                console.log("Card Title:", card_title);
+
+                if (card_title.toLowerCase() === inputCountry.toLowerCase()) {
+                    found = true;
+                    console.log("Country found");
+                    return false; // Exit loop as country is found
+                }
+            });
+
+            if (!found) {
+                console.log("Searching for country", inputCountry);
+                searchCountry(inputCountry);
+            }
+        } else {
+            console.log("No card titles found. Searching for country:", inputCountry);
+            searchCountry(inputCountry);
+        }
+        
     }
 });
 // Input Country test
@@ -32,9 +59,31 @@ function searchCountry(inputCountry){
             population: results[0].population,
             region: results[0].region
         }
-        searchWeather(inputCountry, data)
+
+        if ($(".card-title").length > 0) {
+            let found = false;
+
+            $(".card-title").each(function (){
+                console.log("loop iterate");
+                let card_title = $(this).text().trim();
+                // console.log("Card Title:", card_title);
+
+                if (card_title.toLowerCase() === results[0].name.common.toLowerCase()) {
+                    found - true;
+                    console.log("country found");
+                    return false;
+                }
+            });
+
+            if (!found) {
+                searchWeather(inputCountry, data);
+            }
+        } else {
+            searchWeather(inputCountry, data);
+        }
 })
-}
+};
+
 // pulling from Open Weather API
 function searchWeather(inputCountry, data){
     // API Key for Open Weather
@@ -145,10 +194,10 @@ function displaySavedData() {
     }
 }
 
-$(document).on("click", ".already_saved",function (e) {
-  e.preventDefault();
-  alert("You Already Saved");
-});
+// $(document).on("click", ".already_saved",function (e) {
+//   e.preventDefault();
+//   alert("You Already Saved");
+// });
 
 $(document).on("click", ".clear_favourites button",function (e) {
   e.preventDefault();
