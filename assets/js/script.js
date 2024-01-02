@@ -5,6 +5,8 @@ let saved_fav = $('#saved_fav');
 // add event listener to search button
 $('#country-search').on('keypress', function (event) {
     if(event.key === "Enter"){
+        // empties welcome card 
+        $("#welcome-card").empty();
         event.preventDefault();
         let inputCountry= $('#country-search').val().trim();
         // console.log (inputCountry);
