@@ -80,6 +80,28 @@
 	font-weight: 500;
 }
 
+#welcome-card {
+    color: white;
+    text-align: center;
+    font-size: large;
+}
+
+.welcome-header {
+    font-size: x-large;
+    font-weight: 400;
+}
+
+.flagsDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.france, .mexico, .spain, .turkey, .italy {
+    height: 100px;
+    width: 180px;
+    margin: 20px;
+}
+
 #saved_fav > h2, .heading_country{
    display: none;
    text-align: center;
