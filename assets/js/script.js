@@ -18,17 +18,17 @@ $('#country-search').on('keypress', function (event) {
             $(".card-title").each(function () {
                 console.log("Loop iteration");
                 let card_title = $(this).text().trim();
-                // console.log("Card Title:", card_title);
+                console.log("Card Title:", card_title);
 
                 if (card_title.toLowerCase() === inputCountry.toLowerCase()) {
                     found = true;
-                    // console.log("Country found");
+                    console.log("Country found");
                     return false; // Exit loop as country is found
                 }
             });
 
             if (!found) {
-                // console.log("Searching for country", inputCountry);
+                console.log("Searching for country", inputCountry);
                 searchCountry(inputCountry);
             }
         } else {
@@ -69,7 +69,7 @@ function searchCountry(inputCountry){
                 // console.log("Card Title:", card_title);
 
                 if (card_title.toLowerCase() === results[0].name.common.toLowerCase()) {
-                    found - true;
+                    found = true;
                     console.log("country found");
                     return false;
                 }
@@ -128,8 +128,8 @@ function renderCard(data){
     var cardBody = $('<div>')
     cardBody.addClass('card-body')
     cardBody.append(`
-            <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
-            <div class="card" style="width: 18rem;">
+            <div class="cardContainer col-lg-3 col-md-3 col-sm-6">
+            <div class="card h-100">
             <div class="card-body">
             <img class="card-img-top" src="${data.flag}" alt="Card image cap">
             <h5 class="card-title">${data.name}</h5>
@@ -169,8 +169,8 @@ function displaySavedData() {
             // console.log(countryData);
 
             var cardHtml = `
-                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
-                    <div class="card" style="width: 18rem;">
+                <div class="cardContainer col-lg-3 col-md-3 col-sm-6">
+                    <div class="card h-100">
                         <div class="card-body">
                         <img class="card-img-top" src="${countryData[4]}" alt="Card image cap">
                         <h5 class="card-title">${countryId}</h5>
@@ -180,7 +180,7 @@ function displaySavedData() {
                         <p>${countryData[6]} <img src="${countryData[5]}"> </p>
                         <p><b>Temp:</b> ${countryData[7]} °C</p>
                         <p><b>Humidity: </b> ${countryData[8]}%</p>
-                        <a href="#" class="fave-btn btn btn-primary already_saved">Saved in Favourites!</a>
+                        <a href="#" class="fave-btn btn btn-primary already_saved">Added to Favourites!</a>
                         </div>
                     </div>
                 </div>`;
