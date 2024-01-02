@@ -18,17 +18,17 @@ $('#country-search').on('keypress', function (event) {
             $(".card-title").each(function () {
                 console.log("Loop iteration");
                 let card_title = $(this).text().trim();
-                console.log("Card Title:", card_title);
+                // console.log("Card Title:", card_title);
 
                 if (card_title.toLowerCase() === inputCountry.toLowerCase()) {
                     found = true;
-                    console.log("Country found");
+                    // console.log("Country found");
                     return false; // Exit loop as country is found
                 }
             });
 
             if (!found) {
-                console.log("Searching for country", inputCountry);
+                // console.log("Searching for country", inputCountry);
                 searchCountry(inputCountry);
             }
         } else {
