@@ -138,9 +138,9 @@ function renderCard(data){
             <p class="card-text"><b>Capital: </b>${data.capital}</p>
             <p class="card-text"><b>Population: </b>${data.population}</p>
             <p class="card-text"><b>Region: </b>${data.region}</p>
-            <p>${data.name} (${data.date}) <img src="${data.icon}"> </p>
-            <p><b>Temp:</b> ${data.temp} °C</p>
-            <p><b>Humidity:</b> ${data.humidity}%</p>
+            <p><b>Weather Today:</b> <img src="${data.icon}">(${data.date})</p>
+            <p><b>Current Temperature:</b> ${data.temp} °C</p>
+            <p><b>Current Humidity:</b> ${data.humidity}%</p>
             <a href="#" data-id="${data.name}" data-region="${data.region}" data-population="${data.population}" img-data="${data.flag}" data-capital="${data.capital}" img-icon="${data.icon}" nameWith-icon="${data.name} (${data.date})" temprature="${data.temp}" data_humidity="${data.humidity}" class="btn btn-primary save_btn">Save to Favourites!</a>
         </div>
         </div>
