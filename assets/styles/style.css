@@ -31,7 +31,9 @@ body{
     color: #D83F87 !important;
 }
 
-
+.clear_favourites{
+    display: none;
+}
 .nav-link {
     color: white !important;
     font-size:xx-large;
