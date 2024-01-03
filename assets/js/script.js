@@ -138,7 +138,7 @@ function renderCard(data){
             <p class="card-text"><b>Capital: </b>${data.capital}</p>
             <p class="card-text"><b>Population: </b>${data.population}</p>
             <p class="card-text"><b>Region: </b>${data.region}</p>
-            <p><b>Weather Today:</b> <img src="${data.icon}">(${data.date})</p>
+            <p><b>Weather Today:</b> <img src="${data.icon}"></p>
             <p><b>Current Temperature:</b> ${data.temp} °C</p>
             <p><b>Current Humidity:</b> ${data.humidity}%</p>
             <a href="#" data-id="${data.name}" data-region="${data.region}" data-population="${data.population}" img-data="${data.flag}" data-capital="${data.capital}" img-icon="${data.icon}" nameWith-icon="${data.name} (${data.date})" temprature="${data.temp}" data_humidity="${data.humidity}" class="btn btn-primary save_btn">Save to Favourites!</a>
@@ -178,9 +178,9 @@ function displaySavedData() {
                         <p class="card-text"><b>Capital: </b>${countryData[2]}</p>
                         <p class="card-text"><b>Population: </b>${countryData[0]}</p>
                         <p class="card-text"><b>Region: </b>${countryData[3]}</p>
-                        <p>${countryData[6]} <img src="${countryData[5]}"> </p>
-                        <p><b>Temp:</b> ${countryData[7]} °C</p>
-                        <p><b>Humidity: </b> ${countryData[8]}%</p>
+                        <p><b>Weather Today:</b> <img src="${countryData[5]}"> </p>
+                        <p><b>Current Temperature:</b> ${countryData[7]} °C</p>
+                        <p><b>Current Humidity: </b> ${countryData[8]}%</p>
                         <a href="#" class="fave-btn btn btn-primary already_saved">Added to Favourites!</a>
                         </div>
                     </div>
