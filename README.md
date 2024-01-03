@@ -11,11 +11,11 @@ Click on the following link to access the URL:
 
 ### Usage
 Once the URL has loaded this is what you will see: 
-![alt text](./assets/images/web-page.png)<br>
+![alt text](./assets/images/landpage.png)<br>
 A user can then enter in a destination of choice by typing in the country they wish to search and push enter.<br>
 This will bring up information about the country searched.<br>
 The user will then be able to save the country searched as a favorite, which will then display the next time they open the URL using the local storage function.
-![alt text](./assets/images/faved_webpage.html.png)
+![alt text](./assets/images/faved-page.html.png)
 
 
 
