@@ -3,7 +3,9 @@
     justify-content: space-between;
     padding: 10px;
 }
-
+body{
+    background-image: linear-gradient(90deg,#44318D, #2A1B3D);
+}
 .card-title {
     padding-top: 11px;
 }
@@ -58,7 +60,7 @@
 
 .row {
     background-image: linear-gradient(90deg,#44318D, #2A1B3D);
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .upper_card {

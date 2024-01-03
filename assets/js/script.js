@@ -1,7 +1,7 @@
 // global variables
 // insert HTML selectors here
 let cardDiv = $('#card-div');
-let saved_fav = $('#saved_fav');
+let saved_fav = $('.inner_data');
 // add event listener to search button
 $('#country-search').on('keypress', function (event) {
     if(event.key === "Enter"){
@@ -130,7 +130,7 @@ function renderCard(data){
     var cardBody = $('<div>')
     cardBody.addClass('card-body')
     cardBody.append(`
-            <div class="cardContainer col-lg-3 col-md-3 col-sm-6">
+            <div class="cardContainer col-lg-3 col-md-4 col-sm-6">
             <div class="card h-100">
             <div class="card-body">
             <img class="card-img-top" src="${data.flag}" alt="Card image cap">
@@ -163,7 +163,6 @@ function renderCard(data){
 function displaySavedData() {
     var savedData = JSON.parse(localStorage.getItem('countryData')) || {};
     
-    // console.log("okok");
     for (var countryId in savedData) {
         if (savedData.hasOwnProperty(countryId)) {
             var countryData = savedData[countryId].split('-1');
@@ -171,7 +170,7 @@ function displaySavedData() {
             // console.log(countryData);
 
             var cardHtml = `
-                <div class="cardContainer col-lg-3 col-md-3 col-sm-6">
+                <div class="cardContainer col-lg-3 col-md-4 col-sm-6">
                     <div class="card h-100">
                         <div class="card-body">
                         <img class="card-img-top" src="${countryData[4]}" alt="Card image cap">
@@ -187,24 +186,20 @@ function displaySavedData() {
                     </div>
                 </div>`;
 
-            // Append the generated HTML to a container on page
-            // cardDiv.innerHTML += cardHtml;
-                // console.log(cardHtml);
-
         saved_fav.append(cardHtml);
         }
     }
 }
 
-// $(document).on("click", ".already_saved",function (e) {
-//   e.preventDefault();
-//   alert("You Already Saved");
-// });
 
 $(document).on("click", ".clear_favourites button",function (e) {
   e.preventDefault();
   localStorage.removeItem('countryData');
-  location.reload();
+//   location.reload();
+
+  $(".inner_data").html('');
+  $("#saved_fav").hide();
+  $(this).parent().hide();
 });
 
 
@@ -213,7 +208,8 @@ $(document).ready(function () {
       displaySavedData();
       if (localStorage.getItem('countryData') !== null) {
       	$("#saved_fav > h2").show();
-      	$(".upper_card #saved_fav").append("<div class='clear_favourites'><button>Clear Favourites</button></div>")
+        $(".clear_favourites").show();
+      	// $(".upper_card #saved_fav").append("<div class='clear_favourites'><button>Clear Favourites</button></div>")
       }
 });
 
@@ -236,8 +232,31 @@ $(document).on("click", ".save_btn",function (e) {
     var savedData = JSON.parse(localStorage.getItem('countryData')) || {};
 
     savedData[data_id] = data_population +"-1"+ data_population +"-1"+ data_capital +"-1"+ data_region + "-1" + img_data + "-1" + img_icon + "-1" + namewith_icon + "-1" + temprature + "-1" + data_humidity;
+        
+        var cardHtml = `
+            <div class="cardContainer col-lg-3 col-md-3 col-sm-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                    <img class="card-img-top" src="${img_data}" alt="Card image cap">
+                    <h5 class="card-title">${data_id}</h5>
+                    <p class="card-text"><b>Capital: </b>${data_capital}</p>
+                    <p class="card-text"><b>Population: </b>${data_population}</p>
+                    <p class="card-text"><b>Region: </b>${data_region}</p>
+                    <p>${namewith_icon} <img src="${img_icon}"> </p>
+                    <p><b>Temp:</b> ${temprature} °C</p>
+                    <p><b>Humidity: </b> ${data_humidity}%</p>
+                    <a href="#" class="fave-btn btn btn-primary already_saved">Added to Favourites!</a>
+                    </div>
+                </div>
+            </div>`;
 
-    // Save the updated data back to local storage
-    localStorage.setItem('countryData', JSON.stringify(savedData));
+        saved_fav.append(cardHtml);
+        $("#saved_fav > h2").show();
+        $(".clear_favourites").show();
+        $(this).parents(".cardContainer").remove();
+        $("#saved_fav").show();
+
+        // Save the updated data back to local storage
+        localStorage.setItem('countryData', JSON.stringify(savedData));
 
 });
