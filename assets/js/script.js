@@ -18,23 +18,23 @@ $('#country-search').on('keypress', function (event) {
             let found = false;
 
             $(".card-title").each(function () {
-                console.log("Loop iteration");
+                // console.log("Loop iteration");
                 let card_title = $(this).text().trim();
-                console.log("Card Title:", card_title);
+                // console.log("Card Title:", card_title);
 
                 if (card_title.toLowerCase() === inputCountry.toLowerCase()) {
                     found = true;
-                    console.log("Country found");
+                    // console.log("Country found");
                     return false; // Exit loop as country is found
                 }
             });
 
             if (!found) {
-                console.log("Searching for country", inputCountry);
+                // console.log("Searching for country", inputCountry);
                 searchCountry(inputCountry);
             }
         } else {
-            console.log("No card titles found. Searching for country:", inputCountry);
+            // console.log("No card titles found. Searching for country:", inputCountry);
             searchCountry(inputCountry);
         }
         
@@ -52,7 +52,7 @@ function searchCountry(inputCountry){
     .then(function(response){
         return response.json();
     }) .then (function(results){
-        console.log(results);
+        // console.log(results);
         // flag
         var data = {
             name: results[0].name.common,
@@ -66,13 +66,13 @@ function searchCountry(inputCountry){
             let found = false;
 
             $(".card-title").each(function (){
-                console.log("loop iterate");
+                // console.log("loop iterate");
                 let card_title = $(this).text().trim();
                 // console.log("Card Title:", card_title);
 
                 if (card_title.toLowerCase() === results[0].name.common.toLowerCase()) {
                     found = true;
-                    console.log("country found");
+                    // console.log("country found");
                     return false;
                 }
             });
@@ -97,7 +97,7 @@ function searchWeather(inputCountry, data){
     .then(function(response){
         return response.json();
     }) .then (function(results){
-        console.log(results);
+        // console.log(results);
         let currentTime = new Date(results.list[0].dt * 1000);
         // format Date
         let formattedDate = ('0' + currentTime.getDate()).slice(-2) + ' /' + ('0' + (currentTime.getMonth() + 1)).slice(-2) + ' /' + currentTime.getFullYear();
@@ -105,13 +105,13 @@ function searchWeather(inputCountry, data){
         let tempCelsius = Math.round(results.list[0].main.temp-273.15); Math.round()
         // Humidity
         let humidity = results.list[0].main.humidity;
-        console.log(humidity);
+        // console.log(humidity);
         // Icon -         //Icon URL
         // https://openweathermap.org/img/w/' + weather[0].icon + '.png
         let icon = results.list[0].weather[0].icon;
         let iconURL = 'https://openweathermap.org/img/w/' + icon + '.png';
-        console.log(icon);
-        console.log(iconURL);
+        // console.log(icon);
+        // console.log(iconURL);
         data = {
             ...data,
             date: formattedDate,
@@ -119,7 +119,7 @@ function searchWeather(inputCountry, data){
             temp: tempCelsius,
             humidity: humidity
         }
-        console.log(data)
+        // console.log(data)
         renderCard(data)
         // appends the info on chosen city to main card
         // <div class="WeatherDiv"></div>
