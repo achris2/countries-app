@@ -2,7 +2,7 @@
 A county holiday information search app.
 
 ## Description
-A search app that allows a user to search potential holiday destination countries and view important imformation of the country they have searched. Displayed information includes population, currency as well as weather and other useful information.
+A search app that allows a user to search potential holiday destination countries and view bitesize information of the country they have searched. Displayed information includes the country population, capital and region, as well as the weather, current temperature and humidity.
 
 ### Installation
 Click on the following link to access the URL:
