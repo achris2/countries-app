@@ -12,6 +12,7 @@
 
     <title>CountrySnap</title>
   </head>
+  
   <body>
     <!-- Navigation Code -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -40,11 +41,36 @@
       <div id="welcome-card">
         <p class="welcome-header">Welcome!</p>
           <br>
-          Let us help you find your next holiday destination. Type in the name of a country you would like to visit above and we will give you the necessary information you need to help plan your next vacation. <br>
-          Once you have found a country you like or would like to visit, click on the "Save to favorites" button so we can keep a list of your favorite countries. This will also help in planning a route trip.<br>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary helpBTN" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Need Help getting started? Click me!
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Tips to get going.</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Let us help you find your next holiday destination. Type in the name of a country you would like to visit in the search bar at the top of the page and we will give you the necessary information you need to help plan your next vacation. <br>
+                  <br>
+                  Once you have found a country you like or would like to visit, click on the "Save to favorites" button so we can keep a list of your favorite countries. This will also help in planning a route trip.<br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary closeBTN" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <br>
+          <br>
+          <p>
           The top 5 most visited countries in the world are France, Mexico, Spain, Turkey and Italy respectively.
-        </p>
+          </p>
         <div class="flagsDiv">
           <img src="./assets/images/france.png" alt="france-national-flag" class="france">
           <img src="./assets/images/mexico.png" alt="mexico-national-flag" class="mexico">

@@ -3,9 +3,11 @@
     justify-content: space-between;
     padding: 10px;
 }
+
 body{
     background-image: linear-gradient(90deg,#44318D, #2A1B3D);
 }
+
 .card-title {
     padding-top: 11px;
 }
@@ -34,13 +36,13 @@ body{
 .clear_favourites{
     display: none;
 }
+
 .nav-link {
     color: white !important;
     font-size:xx-large;
 }
 
 #nav-link:hover {
-
     color: #D83F87 !important;
 }
 
@@ -48,7 +50,6 @@ body{
     width: 800px;
     height: 50px;
     text-align: center;
-
 }
 
 .cardContainer {
@@ -59,7 +60,6 @@ body{
     margin: 0 auto;
 }
 
-
 .row {
     background-image: linear-gradient(90deg,#44318D, #2A1B3D);
     /* height: 100vh; */
@@ -69,10 +69,12 @@ body{
     background-image: linear-gradient(90deg,#44318D, #2A1B3D);
     padding-bottom: 40px;
 }
+
 .clear_favourites{
 	text-align: center;
 	padding-top: 20px;
 }
+
 .clear_favourites button{
 	padding: 8px 20px;
 	border: 0;
@@ -113,4 +115,19 @@ body{
     padding-bottom: 20px;
     color: white;
     font-size: 25px;
+}
+
+.modal-body, .modal-header, .modal-footer {
+    color: white;
+    background-color: #44318D;
+}
+
+.helpBTN {
+    /* background-color: #A4B3B6; */
+    border: none;
+    color: white;
+}
+
+.closeBTN {
+    background-color: #44318D;
 }
