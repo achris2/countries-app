@@ -234,7 +234,7 @@ $(document).on("click", ".save_btn",function (e) {
     savedData[data_id] = data_population +"-1"+ data_population +"-1"+ data_capital +"-1"+ data_region + "-1" + img_data + "-1" + img_icon + "-1" + namewith_icon + "-1" + temprature + "-1" + data_humidity;
         
         var cardHtml = `
-            <div class="cardContainer col-lg-3 col-md-3 col-sm-6">
+            <div class="cardContainer col-lg-3 col-md-4 col-sm-6">
                 <div class="card h-100">
                     <div class="card-body">
                     <img class="card-img-top" src="${img_data}" alt="Card image cap">
