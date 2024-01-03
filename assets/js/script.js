@@ -178,7 +178,7 @@ function displaySavedData() {
                         <p class="card-text"><b>Capital: </b>${countryData[2]}</p>
                         <p class="card-text"><b>Population: </b>${countryData[0]}</p>
                         <p class="card-text"><b>Region: </b>${countryData[3]}</p>
-                        <p><b>Weather Today:</b> <img src="${countryData[5]}"> </p>
+                        <p><b>Weather Today:</b> <img src="${countryData[5]}"></p>
                         <p><b>Current Temperature:</b> ${countryData[7]} °C</p>
                         <p><b>Current Humidity: </b> ${countryData[8]}%</p>
                         <a href="#" class="fave-btn btn btn-primary already_saved">Added to Favourites!</a>
@@ -242,7 +242,7 @@ $(document).on("click", ".save_btn",function (e) {
                     <p class="card-text"><b>Capital: </b>${data_capital}</p>
                     <p class="card-text"><b>Population: </b>${data_population}</p>
                     <p class="card-text"><b>Region: </b>${data_region}</p>
-                    <p>${namewith_icon} <img src="${img_icon}"> </p>
+                    <p><b>Weather Today:</b> <img src="${img_icon}"> </p>
                     <p><b>Temp:</b> ${temprature} °C</p>
                     <p><b>Humidity: </b> ${data_humidity}%</p>
                     <a href="#" class="fave-btn btn btn-primary already_saved">Added to Favourites!</a>
